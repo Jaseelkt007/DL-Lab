@@ -21,8 +21,23 @@ def load(name, data_dir, batch_size=batch_size, caching=True):
         )
 
         # Calculate the number of examples for shuffle buffer size
-        num_examples = sum(1 for _ in full_ds.unbatch())  ##########
-        ds_info = {"num_examples ": num_examples}
+        num_examples = sum(1 for _ in full_ds.unbatch())
+        
+        for images, _ in full_ds.take(1):
+            image_shape = images.shape[1:]
+            break
+
+        class_names = full_ds.class_names
+        num_classes = len(class_names)
+
+        # Define df_info
+        ds_info = {
+            "num_examples" : num_examples,
+            "features" : {
+                "image" : {"shape" : image_shape , "dtype": tf.float32},
+                "label" : {"num_classes": num_classes, "dtype": tf.int64}
+            }
+        }
 
         # Split into training and validation sets
         total_samples = sum(1 for _ in full_ds.unbatch())
@@ -33,8 +48,6 @@ def load(name, data_dir, batch_size=batch_size, caching=True):
 
         # Prepare and return the training and validation datasets
         return prepare(ds_train, ds_val, ds_info=ds_info, batch_size=batch_size, caching=caching)
-
-        print("ds_info structure:", ds_info)
 
     elif name == "eyepacs":
         logging.info(f"Preparing dataset {name}...")
@@ -67,10 +80,10 @@ def load(name, data_dir, batch_size=batch_size, caching=True):
             data_dir=data_dir
         )
 
-    #   return prepare(ds_train, ds_val, ds_test, ds_info)
+        return prepare(ds_train, ds_val, ds_test, ds_info)
 
-    #else:
-        #raise ValueError
+    else:
+        raise ValueError
 
 @gin.configurable
 def prepare(ds_train, ds_val, ds_test=None, ds_info=None, batch_size = batch_size, caching=True):
@@ -103,9 +116,5 @@ def prepare(ds_train, ds_val, ds_test=None, ds_info=None, batch_size = batch_siz
 
     return ds_train, ds_val, ds_test, ds_info
 
-
-data_dir = r'F:\IDRID_dataset\images_augmented\train'
-
-ds_train, ds_val, _, _ = load("idrid", data_dir)
 
 
