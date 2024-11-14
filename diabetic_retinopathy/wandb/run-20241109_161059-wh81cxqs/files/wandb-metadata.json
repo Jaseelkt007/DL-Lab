@@ -1,0 +1,43 @@
+{
+  "os":  "Windows-10-10.0.22631-SP0",
+  "python":  "3.10.9",
+  "startedAt":  "2024-11-09T15:10:59.025859Z",
+  "program":  "F:\\学校\\课程文件\\dl lab\\RETINOPATHY DLLAB\\dl-lab-24w-team04\\diabetic_retinopathy\\main.py",
+  "codePath":  "diabetic_retinopathy\\main.py",
+  "git":  {
+    "remote":  "https://github.tik.uni-stuttgart.de/iss/dl-lab-24w-team04.git",
+    "commit":  "b9acb6b4c91725f67e51432da9de4a84090ee545"
+  },
+  "email":  "jiangyueyang2023de@outlook.com",
+  "root":  "F:\\学校\\课程文件\\dl lab\\RETINOPATHY DLLAB\\dl-lab-24w-team04\\diabetic_retinopathy",
+  "host":  "Laptop_JYY",
+  "username":  "14037",
+  "executable":  "E:\\anaconda\\python.exe",
+  "codePathLocal":  "main.py",
+  "cpu_count":  14,
+  "cpu_count_logical":  20,
+  "gpu":  "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "gpu_count":  1,
+  "disk":  {
+    "/":  {
+      "total":  "36700155904",
+      "used":  "23732887552"
+    }
+  },
+  "memory":  {
+    "total":  "16788934656"
+  },
+  "cpu":  {
+    "count":  14,
+    "countLogical":  20
+  },
+  "gpu_nvidia":  [
+    {
+      "name":  "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "memoryTotal":  "8585740288",
+      "cudaCores":  3072,
+      "architecture":  "Ada"
+    }
+  ],
+  "cudaVersion":  "12.6"
+}
